@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     const dealInterval = setInterval(async () => {
       try {
-        const res = await axios.get<SensorData>("http://192.168.1.200/getData");
+        const res = await axios.get<SensorData>("http://192.168.4.1/getData");
         const newData = res.data;
         setDataList((prevList) => [newData, ...prevList].slice(0, 5));
       } catch (err) {
@@ -28,11 +28,11 @@ export default function Home() {
   }, []);
 
   async function handleOn() {
-    await axios.post("http://192.168.1.200/on");
+    await axios.post("http://192.168.4.1/on");
   }
 
   async function handleOff() {
-    await axios.post("http://192.168.1.200/off");
+    await axios.post("http://192.168.4.1/off");
   }
 
   return (
